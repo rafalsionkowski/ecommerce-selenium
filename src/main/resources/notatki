@@ -1,0 +1,28 @@
+    Select dropdown = new Select(driver.findElement(By.id("id")));
+
+    //Get all options
+    List<WebElement> dd = dropdown.getOptions();
+
+    //Get the length
+    System.out.println(dd.size());
+
+    // Loop to print one by one
+    for (int j = 0; j < dd.size(); j++) {
+        System.out.println(dd.get(j).getText());
+
+    }
+
+
+    Dodanie logowania do obsługi catch/try
+
+    public boolean checkIfContactFormSendSucceed() {
+      try {
+        if(find(alertSuccess).isDisplayed()) {
+          return true;
+        }
+        logger.error("Alert success is not displayed");
+        return false;
+      } catch (NoSuchElementException exception) {
+        return false;
+      }
+    }
