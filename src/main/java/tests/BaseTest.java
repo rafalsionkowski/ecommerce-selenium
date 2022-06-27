@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
@@ -9,6 +10,7 @@ import org.testng.annotations.BeforeSuite;
 import pages.user.contact.SendContactForm;
 import pages.user.login.LoginToShop;
 import pages.user.register.AddNewUser;
+import utils.screenshotfactory.ScreenShotTest;
 
 import java.util.Locale;
 
@@ -22,6 +24,8 @@ public class BaseTest {
     protected SendContactForm sendContactForm;
     protected AddNewUser addNewUser;
     protected Faker randomData;
+    protected ScreenShotTest screenShot;
+
 
     @BeforeSuite
     public void setUp () throws Exception {
@@ -34,6 +38,7 @@ public class BaseTest {
         sendContactForm = new SendContactForm(driver);
         addNewUser = new AddNewUser(driver);
         randomData = new Faker(new Locale("pl"));
+        screenShot = new ScreenShotTest(driver);
         }
 
     @AfterClass

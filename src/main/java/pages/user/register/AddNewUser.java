@@ -47,7 +47,6 @@ public class AddNewUser extends BasePage {
     private final String password = randomData.internet().password(5,10);
 
 
-
     public AddNewUser(WebDriver driver) {
 
         super(driver);

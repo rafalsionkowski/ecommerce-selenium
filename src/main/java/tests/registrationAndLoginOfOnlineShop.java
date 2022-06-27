@@ -5,19 +5,22 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.listeners.TestListener;
 
+import java.io.IOException;
+
 @Listeners({TestListener.class })
 
 public class registrationAndLoginOfOnlineShop extends BaseTest {
 
 
     @Test (priority = 0, description = "", retryAnalyzer = RetryTest.class)
-    public void failLoginToShop () throws InterruptedException {
-
+    public void failLoginToShop () throws InterruptedException, IOException {
         loginToShop
                 .goToLoginPage()
                 .setEmail(randomData.internet().emailAddress())
                 .setPass(randomData.internet().password(5,10))
                 .submitForm();
+
+        screenShot.screenshotEntirePageAshot();
 
         Assert.assertFalse(loginToShop.checkIfLoginFailed());
 

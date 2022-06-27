@@ -6,6 +6,8 @@ import org.testng.ITestResult;
 import tests.BaseTest;
 import utils.log.Log;
 
+import java.io.IOException;
+
 public class TestListener extends BaseTest implements ITestListener {
     private static String getTestMethodName(ITestResult iTestResult) {
         return iTestResult.getMethod().getConstructorOrMethod().getName();
