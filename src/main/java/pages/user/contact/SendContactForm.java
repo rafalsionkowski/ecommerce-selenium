@@ -34,7 +34,7 @@ public class SendContactForm extends BasePage {
     }
 
     public SendContactForm addAttachment () {
-        type("/Users/rsionkowski/Desktop/test.txt", fileUpload);
+        type("C:\\Users\\rafal\\OneDrive\\Desktop\\test.txt", fileUpload);
         return this;
     }
 

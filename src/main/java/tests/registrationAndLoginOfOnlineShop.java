@@ -19,7 +19,7 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
                 .setPass(randomData.internet().password(5,10))
                 .submitForm();
 
-        Assert.assertFalse(loginToShop.checkIfLoginSucced());
+        Assert.assertFalse(loginToShop.checkIfLoginFailed());
 
     }
 
@@ -29,7 +29,7 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
         sendContactForm
                 .goToContactFormPage()
                 .selectSubjectFromDropdown()
-                .setEmailAdress("test@test.gmail.com")
+                .setEmailAdress("rafal.sionkowski@gmail.com")
                 .setMessage("wiadomość testowa")
                 .addAttachment()
                 .sendContactForm();
@@ -52,6 +52,9 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
                 .setEmail(addNewUser.getEmailAdressToLogin())
                 .setPass(addNewUser.getPassword())
                 .submitForm();
+
+        Assert.assertTrue(loginToShop.checkIfLoginSucceed());
+
     }
 
 }
