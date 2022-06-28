@@ -12,6 +12,7 @@ import java.io.IOException;
 public class registrationAndLoginOfOnlineShop extends BaseTest {
 
 
+
     @Test (priority = 0, description = "", retryAnalyzer = RetryTest.class)
     public void failLoginToShop () throws InterruptedException, IOException {
         loginToShop
@@ -21,7 +22,6 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
                 .submitForm();
 
         screenShot.screenshotEntirePageAshot();
-
         Assert.assertFalse(loginToShop.checkIfLoginFailed());
 
     }
@@ -41,7 +41,7 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
 
     }
 
-    @Test (priority = 3, description = "", retryAnalyzer = RetryTest.class)
+    @Test (priority = 2, description = "", retryAnalyzer = RetryTest.class)
     public void addNewUserAndFirstLogin() throws InterruptedException {
 
         addNewUser
@@ -57,6 +57,11 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
                 .submitForm();
 
         Assert.assertTrue(loginToShop.checkIfLoginSucceed());
+
+    }
+
+    @Test (priority = 3, description = "", retryAnalyzer = RetryTest.class)
+    public void addProductToCartBeforeLogin() throws InterruptedException {
 
     }
 

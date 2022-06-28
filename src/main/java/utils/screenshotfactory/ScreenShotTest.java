@@ -16,18 +16,18 @@ public class ScreenShotTest extends BasePage {
 
 
     //Current Directory
-    private String currentDir = System.getProperty("user.dir");
+    private final String currentDir = System.getProperty("user.dir");
 
     //GetScreenShot Method Directory and Image File
-    private File getSreenShotMethodImageFile = new File (currentDir +
+    private final File getSreenShotMethodImageFile = new File (currentDir +
             "\\screenShotTests\\amazonscreenshot.png");
 
     //Element Screenshot Directory and Image File
-    private File webElementImageFile = new File(currentDir +
+    private final File webElementImageFile = new File(currentDir +
             "\\screenShotTests\\logo.png" );
 
     //Entirepage ScreenShot Directory and Image File
-    private File entirePageImageFile = new File(currentDir +
+    private final File entirePageImageFile = new File(currentDir +
             "\\screenShotTests\\entirepage.png" );
 
     public ScreenShotTest(WebDriver driver) {

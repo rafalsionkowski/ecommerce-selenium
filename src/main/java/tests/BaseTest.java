@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
+import pages.AddProductToShopingCart;
 import pages.user.contact.SendContactForm;
 import pages.user.login.LoginToShop;
 import pages.user.register.AddNewUser;
@@ -25,6 +26,7 @@ public class BaseTest {
     protected AddNewUser addNewUser;
     protected Faker randomData;
     protected ScreenShotTest screenShot;
+    protected AddProductToShopingCart addProductToShopingCart;
 
 
     @BeforeSuite
@@ -39,6 +41,7 @@ public class BaseTest {
         addNewUser = new AddNewUser(driver);
         randomData = new Faker(new Locale("pl"));
         screenShot = new ScreenShotTest(driver);
+        addProductToShopingCart = new AddProductToShopingCart(driver);
         }
 
     @AfterClass

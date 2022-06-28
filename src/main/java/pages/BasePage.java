@@ -5,6 +5,8 @@ import com.github.javafaker.Internet;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -51,13 +53,16 @@ public class BasePage {
         //Get all options
         List<WebElement> dd = dropdown.getOptions();
 
-        //Get the length
-       // System.out.println(dd.size());
-
         // Loop to print one by one
        // for (int j = 0; j < dd.size(); j++) {
             //System.out.println(dd.get(j).getText());
            dropdown.selectByVisibleText(dd.get(dd.size()-1).getText());
+
+        }
+
+        protected void moveToElement (By locator) {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(locator)).build().perform();
 
         }
 

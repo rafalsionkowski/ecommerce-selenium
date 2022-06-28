@@ -3,7 +3,6 @@ package pages.user.register;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
-import pages.user.login.LoginToShop;
 import utils.log.Log;
 
 public class AddNewUser extends BasePage {

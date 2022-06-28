@@ -41,11 +41,6 @@ public class TestListener extends BaseTest implements ITestListener {
         Log.info(getTestMethodName(iTestResult) + " test is failed.");
 
 
-        //Get driver from BaseTest and assign to local webdriver variable.
-        Object testClass = iTestResult.getInstance();
-
-
-
     }
 
     @Override
