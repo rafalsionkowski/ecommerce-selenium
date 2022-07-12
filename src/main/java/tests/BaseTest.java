@@ -2,15 +2,15 @@ package tests;
 
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-import pages.AddProductToShopingCart;
+import pages.shoping.products.AddProductToShopingCart;
 import pages.user.contact.SendContactForm;
 import pages.user.login.LoginToShop;
 import pages.user.register.AddNewUser;
+import utils.dbconnection.DbConnector;
 import utils.screenshotfactory.ScreenShotTest;
 
 import java.util.Locale;
@@ -42,6 +42,8 @@ public class BaseTest {
         randomData = new Faker(new Locale("pl"));
         screenShot = new ScreenShotTest(driver);
         addProductToShopingCart = new AddProductToShopingCart(driver);
+        DbConnector dbConnector = new DbConnector();
+        dbConnector.connecttoDb();
         }
 
     @AfterClass

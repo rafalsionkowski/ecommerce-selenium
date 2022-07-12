@@ -62,7 +62,14 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
 
     @Test (priority = 3, description = "", retryAnalyzer = RetryTest.class)
     public void addProductToCartBeforeLogin() throws InterruptedException {
-
+        addProductToShopingCart
+                .addProductToCart()
+                .getCartTotalPrice();
+        loginToShop
+                .goToLoginPage()
+                .setEmail("rafal.sionkowski@gmail.com")
+                .setPass("Fasolek1")
+                .submitForm();
     }
 
 }
