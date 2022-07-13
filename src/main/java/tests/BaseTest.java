@@ -28,6 +28,8 @@ public class BaseTest {
     protected ScreenShotTest screenShot;
     protected AddProductToShopingCart addProductToShopingCart;
 
+    DbConnector dbConnector = new DbConnector();
+
 
     @BeforeSuite
     public void setUp () throws Exception {
@@ -42,7 +44,6 @@ public class BaseTest {
         randomData = new Faker(new Locale("pl"));
         screenShot = new ScreenShotTest(driver);
         addProductToShopingCart = new AddProductToShopingCart(driver);
-        DbConnector dbConnector = new DbConnector();
         dbConnector.connecttoDb();
         }
 
@@ -54,6 +55,7 @@ public class BaseTest {
    @AfterSuite
    public void tearDown () throws Exception {
         driver.quit();
+        dbConnector.closeConnection();
    }
     }
 
