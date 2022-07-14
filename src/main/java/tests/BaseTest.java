@@ -15,7 +15,6 @@ import utils.screenshotfactory.ScreenShotTest;
 
 import java.util.Locale;
 
-;
 
 public class BaseTest {
     protected ChromeDriver driver;
@@ -44,7 +43,7 @@ public class BaseTest {
         randomData = new Faker(new Locale("pl"));
         screenShot = new ScreenShotTest(driver);
         addProductToShopingCart = new AddProductToShopingCart(driver);
-        dbConnector.connecttoDb();
+        dbConnector.connectToDb();
         }
 
     @AfterClass

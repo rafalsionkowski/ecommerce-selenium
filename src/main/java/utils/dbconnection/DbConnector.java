@@ -13,17 +13,26 @@ public class DbConnector {
     private final String password = "qwerty";
     Connection connection;
 
-    public Connection connecttoDb() throws SQLException {
+    public Connection connectToDb() throws SQLException {
 
-        connection = DriverManager.getConnection(url, user, password);
-        Log.info("połoczone");
-
+        try {
+            connection = DriverManager.getConnection(url, user, password);
+            Log.info("Connected to DB");
+        } catch (SQLException e) {
+            Log.error("Cannot connect to DB" + e);
+        }
         return connection;
+
     }
 
     public void closeConnection() throws SQLException {
-        connection.close();
-        Log.info("rozłączono");
+
+        try {
+            connection.close();
+            Log.info("Disconnected from DB");
+        } catch (SQLException e) {
+            Log.error("Cannot disconect to DB" + e);
+        }
     }
 
-}
+    }
