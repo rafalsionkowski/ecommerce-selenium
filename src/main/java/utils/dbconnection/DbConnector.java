@@ -25,14 +25,16 @@ public class DbConnector {
 
     }
 
-    public void closeConnection() throws SQLException {
+    public void closeConnection() throws SQLException, NullPointerException {
 
         try {
             connection.close();
             Log.info("Disconnected from DB");
+        } catch (NullPointerException e) {
+            Log.error("Cannot disconect to DB" + e.getMessage());
         } catch (SQLException e) {
-            Log.error("Cannot disconect to DB" + e);
+            Log.error("Cannot disconect to DB" + e.getMessage());
         }
-    }
 
     }
+}
