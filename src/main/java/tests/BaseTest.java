@@ -4,6 +4,7 @@ import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import pages.shoping.products.AddProductToShopingCart;
@@ -11,6 +12,7 @@ import pages.user.contact.SendContactForm;
 import pages.user.login.LoginToShop;
 import pages.user.register.AddNewUser;
 import utils.dbconnection.DbConnector;
+import utils.log.Log;
 import utils.screenshotfactory.ScreenShotTest;
 
 import java.util.Locale;
@@ -27,8 +29,6 @@ public class BaseTest {
     protected ScreenShotTest screenShot;
     protected AddProductToShopingCart addProductToShopingCart;
 
-    DbConnector dbConnector = new DbConnector();
-
 
     @BeforeSuite
     public void setUp () throws Exception {
@@ -43,18 +43,18 @@ public class BaseTest {
         randomData = new Faker(new Locale("pl"));
         screenShot = new ScreenShotTest(driver);
         addProductToShopingCart = new AddProductToShopingCart(driver);
-        dbConnector.connectToDb();
         }
 
-    @AfterClass
+    @AfterMethod
     public void gotToDashboard() {
+        driver.manage().deleteAllCookies();
         driver.get(URLDashboardPage);
+        Log.info("go to dashboard");
     }
 
    @AfterSuite
    public void tearDown () throws Exception {
-        driver.quit();
-        dbConnector.closeConnection();
+       driver.quit();
    }
     }
 

@@ -3,7 +3,10 @@ package pages.user.register;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import pages.BasePage;
+import pages.user.UserDbManager;
 import utils.log.Log;
+
+import java.sql.SQLException;
 
 public class AddNewUser extends BasePage {
 
@@ -69,7 +72,7 @@ public class AddNewUser extends BasePage {
         return this;
     }
 
-    public AddNewUser fillRegistrationForm() {
+    public AddNewUser fillRegistrationForm() throws SQLException {
         waitForElement(genderRadio);
         click(genderRadio);
         type(randomData.name().firstName(), firstNameInput);
@@ -87,8 +90,18 @@ public class AddNewUser extends BasePage {
         selectLastOptionOfDropdown(countryDropdown);
         type(randomData.phoneNumber().cellPhone(), mobilePhoneInput);
         click(registerButton);
+
+        try {
+            UserDbManager userDbManager = new UserDbManager();
+            userDbManager.addNewUserToDb(emailAdressToLogin, password);
+            Log.info("New user add to DB");
+        } catch (SQLException e) {
+            Log.error("Can not add User to DB" + e);
+        }
+
         return this;
     }
+
 
     public AddNewUser logOut() {
         click(signOutButton);

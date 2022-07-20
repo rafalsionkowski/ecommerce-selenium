@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import utils.listeners.TestListener;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 @Listeners({TestListener.class })
 
@@ -42,7 +43,7 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
     }
 
     @Test (priority = 2, description = "", retryAnalyzer = RetryTest.class)
-    public void addNewUserAndFirstLogin() throws InterruptedException {
+    public void addNewUserAndFirstLogin() throws InterruptedException, SQLException {
 
         addNewUser
                 .goToLoginPage()
@@ -55,7 +56,7 @@ public class registrationAndLoginOfOnlineShop extends BaseTest {
                 .setEmail(addNewUser.getEmailAdressToLogin())
                 .setPass(addNewUser.getPassword())
                 .submitForm();
-
+;
         Assert.assertTrue(loginToShop.checkIfLoginSucceed());
 
     }
